@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.100
+
+[compare changes](https://github.com/yanuaraditia/purrify/compare/v1.1.0...v0.0.100)
+
+### 🩹 Fixes
+
+- Revert version number to 1.0.0 in package.json ([de74ea3](https://github.com/yanuaraditia/purrify/commit/de74ea3))
+
+### ❤️ Contributors
+
+- Yanuar Aditia ([@ngalor](https://github.com/ngalor))
+
 ## v1.1.0
 
 
