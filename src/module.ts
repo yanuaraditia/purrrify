@@ -1,4 +1,4 @@
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, addTypeTemplate, createResolver } from '@nuxt/kit'
 import type { ModuleOptions } from './types'
 
 export * from './types'
@@ -16,6 +16,19 @@ export default defineNuxtModule<ModuleOptions>({
         profiles: options.profiles
       }
     }
+
+    addTypeTemplate({
+      filename: 'types/purrify.d.ts',
+      getContents() {
+        return `import type { ObjectDirective } from 'vue'
+declare module 'vue' {
+  interface GlobalDirectives {
+    vSanitizeHtml: ObjectDirective<HTMLElement, string>
+  }
+}
+export {}`
+      }
+    })
 
     addPlugin(resolver.resolve('./runtime/plugin'))
   }
