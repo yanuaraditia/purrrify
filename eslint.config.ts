@@ -1,20 +1,33 @@
-// @ts-check
 import { createConfigForNuxt } from '@nuxt/eslint-config/flat'
 
-// Run `npx @eslint/config-inspector` to inspect the resolved config interactively
 export default createConfigForNuxt({
   features: {
-    // Rules for module authors
     tooling: true,
-    // Rules for formatting
-    stylistic: true,
-  },
-  dirs: {
-    src: [
-      './playground',
-    ],
-  },
+    stylistic: {
+      commaDangle: 'never',
+      braceStyle: '1tbs'
+    }
+  }
+}).overrideRules({
+  'import/first': 'off',
+  'import/order': 'off',
+  'vue/multi-word-component-names': 'off',
+  'vue/max-attributes-per-line': ['error', { singleline: 5 }],
+  '@typescript-eslint/ban-types': 'off',
+  '@typescript-eslint/no-empty-object-type': 'off',
+  '@typescript-eslint/no-explicit-any': 'off',
+  '@stylistic/comma-dangle': 'off',
+  '@stylistic/quotes': 'off',
+  '@stylistic/quote-props': 'off',
+  '@typescript-eslint/ban-ts-comment': 'warn',
+  '@stylistic/operator-linebreak': 'off',
+  '@stylistic/arrow-parens': 'off',
+  '@stylistic/indent-binary-ops': 'off',
+  'vue/singleline-html-element-content-newline': 'off',
+  'vue/operator-linebreak': 'off',
+  '@stylistic/member-delimiter-style': 'off',
+  '@stylistic/indent': 'off',
+  'vue/html-indent': 'off',
+  'vue/html-self-closing': 'off',
+  'vue/no-deprecated-slot-attribute': 'off'
 })
-  .append(
-    // your custom flat config here...
-  )

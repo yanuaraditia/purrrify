@@ -18,5 +18,5 @@ const dirtyHtml = `
   <p>This is a <strong>simple</strong> paragraph.</p>
   <img src="image.jpg" onerror="alert('Hacked!')" />
   <a href="https://example.com" onclick="stealCookies()">Click me!</a>
-</div>`;
+</div>`
 </script>

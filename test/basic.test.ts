@@ -10,6 +10,6 @@ describe("ssr", async () => {
   it("renders sanitized HTML", async () => {
     const html = await $fetch("/");
     expect(html).toContain("<p>Hello</p>");
-    expect(html).not.toContain("<script>");
+    expect(html).not.toContain("alert(1)");
   });
 });

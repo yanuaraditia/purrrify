@@ -1,7 +1,7 @@
 {
   "name": "purrify",
   "version": "1.0.0",
-  "description": "A Nuxt module that integrates DOMPurify for sanitizing HTML content and protecting against XSS attacks, with support for multiple profiles. Based on @radya/nuxt-dompurify by Pringgo Radianto (Radya).",
+  "description": "A Nuxt module that integrates sanitize-html for sanitizing HTML content and protecting against XSS attacks, with support for SSR and multiple profiles.",
   "repository": "yanuaraditia/purrify",
   "keywords": [
     "nuxt",
@@ -47,8 +47,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^4.4.2",
-    "dompurify": "^3.4.0",
-    "jsdom": "^29.0.2"
+    "sanitize-html": "^2.17.2"
   },
   "devDependencies": {
     "@nuxt/devtools": "^3.2.4",
@@ -56,8 +55,8 @@
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.4.2",
     "@nuxt/test-utils": "^4.0.2",
-    "@types/dompurify": "^3.2.0",
     "@types/node": "^25.6.0",
+    "@types/sanitize-html": "^2.16.1",
     "changelogen": "^0.6.2",
     "eslint": "^10.2.0",
     "nuxt": "^4.4.2",

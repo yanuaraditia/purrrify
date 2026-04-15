@@ -1,41 +1,32 @@
-import type { DirectiveBinding } from "vue";
-import DOMPurify from "dompurify";
-import { defineNuxtPlugin } from "#app";
-import { useRuntimeConfig } from "#imports";
+import type { DirectiveBinding } from 'vue'
+import sanitizeHtml from 'sanitize-html'
+import { defineNuxtPlugin } from '#app'
+import { useRuntimeConfig } from '#imports'
 
-export default defineNuxtPlugin(async ({ vueApp }) => {
+export default defineNuxtPlugin(({ vueApp }) => {
   const {
-    public: { dompurify },
-  } = useRuntimeConfig();
+    public: { dompurify }
+  } = useRuntimeConfig()
 
-  let purify: DOMPurify.DOMPurifyI;
-
-  if (import.meta.server) {
-    const { JSDOM } = await import("jsdom");
-    purify = DOMPurify(new JSDOM("").window);
-  } else {
-    purify = DOMPurify(window);
-  }
-
-  function sanitizeHtml(binding: DirectiveBinding) {
+  function sanitize(binding: DirectiveBinding) {
     if (binding.arg && dompurify?.profiles?.[binding.arg]) {
-      return purify.sanitize(binding.value, dompurify.profiles[binding.arg]);
+      return sanitizeHtml(binding.value, dompurify.profiles[binding.arg])
     }
 
-    return purify.sanitize(binding.value);
+    return sanitizeHtml(binding.value)
   }
 
-  vueApp.directive("sanitize-html", {
+  vueApp.directive('sanitize-html', {
     created(el, binding) {
-      el.innerHTML = sanitizeHtml(binding);
+      el.innerHTML = sanitize(binding)
     },
     updated(el, binding) {
-      el.innerHTML = sanitizeHtml(binding);
+      el.innerHTML = sanitize(binding)
     },
     getSSRProps(binding) {
       return {
-        innerHTML: sanitizeHtml(binding),
-      };
-    },
-  });
-});
+        innerHTML: sanitize(binding)
+      }
+    }
+  })
+})
