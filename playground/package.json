@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "purrify-playground",
+  "name": "purrrify-playground",
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",

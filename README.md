@@ -1,4 +1,4 @@
-# 🙀 Purrify
+# 🙀 Purrrify
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -23,20 +23,20 @@ A Nuxt module that integrates [sanitize-html](https://github.com/apostrophecms/s
 Install the module to your Nuxt application:
 
 ```bash
-npx nuxt module add purrify
+npx nuxt module add purrrify
 ```
 
 Or manually:
 
 ```bash
-bun add -D purrify
+bun add -D purrrify
 ```
 
 Then add it to your `nuxt.config.ts`:
 
 ```ts
 export default defineNuxtConfig({
-  modules: ['purrify']
+  modules: ['purrrify']
 })
 ```
 
@@ -67,7 +67,7 @@ Define different sanitization configurations for specific use cases using [sanit
 
 ```ts
 export default defineNuxtConfig({
-  modules: ['purrify'],
+  modules: ['purrrify'],
   dompurify: {
     profiles: {
       headingsOnly: {
@@ -94,7 +94,7 @@ Pass the profile name as an argument to the directive:
 
 ## Acknowledgements
 
-This module was inspired by [`@radya/nuxt-dompurify`](https://github.com/radyakaze/nuxt-dompurify) by [Pringgo Radianto (Radya)](https://github.com/radyakaze). The original module used DOMPurify with jsdom for SSR, which caused build issues in production. Purrify is a complete rewrite using [sanitize-html](https://github.com/apostrophecms/sanitize-html), which works natively on both server and client without requiring a DOM implementation.
+This module was inspired by [`@radya/nuxt-dompurify`](https://github.com/radyakaze/nuxt-dompurify) by [Pringgo Radianto (Radya)](https://github.com/radyakaze). The original module used DOMPurify with jsdom for SSR, which caused build issues in production. Purrrify is a complete rewrite using [sanitize-html](https://github.com/apostrophecms/sanitize-html), which works natively on both server and client without requiring a DOM implementation.
 
 ## Contribution
 
@@ -133,11 +133,11 @@ This module was inspired by [`@radya/nuxt-dompurify`](https://github.com/radyaka
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/purrify/latest.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-version-href]: https://npmjs.com/package/purrify
-[npm-downloads-src]: https://img.shields.io/npm/dm/purrify.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-downloads-href]: https://npm.chart.dev/purrify
-[license-src]: https://img.shields.io/npm/l/purrify.svg?style=flat&colorA=020420&colorB=00DC82
-[license-href]: https://npmjs.com/package/purrify
+[npm-version-src]: https://img.shields.io/npm/v/purrrify/latest.svg?style=flat&colorA=020420&colorB=00DC82
+[npm-version-href]: https://npmjs.com/package/purrrify
+[npm-downloads-src]: https://img.shields.io/npm/dm/purrrify.svg?style=flat&colorA=020420&colorB=00DC82
+[npm-downloads-href]: https://npm.chart.dev/purrrify
+[license-src]: https://img.shields.io/npm/l/purrrify.svg?style=flat&colorA=020420&colorB=00DC82
+[license-href]: https://npmjs.com/package/purrrify
 [nuxt-src]: https://img.shields.io/badge/Nuxt-020420?logo=nuxt
 [nuxt-href]: https://nuxt.com

@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['purrify'],
+  modules: ['purrrify'],
   devtools: { enabled: true },
   compatibilityDate: 'latest',
   dompurify: {

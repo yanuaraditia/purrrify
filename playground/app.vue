@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Purrify Playground</h2>
+    <h2>Purrrify Playground</h2>
 
     <h3>Default sanitization:</h3>
     <div v-sanitize-html="dirtyHtml" />

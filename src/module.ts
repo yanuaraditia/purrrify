@@ -10,7 +10,7 @@ export * from './types'
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'purrify',
+    name: 'purrrify',
     configKey: 'dompurify'
   },
   setup(options, nuxt) {
@@ -23,7 +23,7 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     addTypeTemplate({
-      filename: 'types/purrify.d.ts',
+      filename: 'types/purrrify.d.ts',
       getContents() {
         return `import type { ObjectDirective } from 'vue'
 declare module 'vue' {
