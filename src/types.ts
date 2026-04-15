@@ -11,7 +11,7 @@ export interface ModuleOptions {
 
 declare module 'nuxt/schema' {
   interface PublicRuntimeConfig {
-    dompurify: {
+    purrrify: {
       profiles?: Profiles
     }
   }

@@ -68,7 +68,7 @@ Define different sanitization configurations for specific use cases using [sanit
 ```ts
 export default defineNuxtConfig({
   modules: ['purrrify'],
-  dompurify: {
+  purrrify: {
     profiles: {
       headingsOnly: {
         allowedTags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
@@ -91,6 +91,66 @@ Pass the profile name as an argument to the directive:
   <div v-sanitize-html:headingsOnly="dirtyHtml" />
 </template>
 ```
+
+## Migrating from `@radya/nuxt-dompurify`
+
+If you're switching from [`@radya/nuxt-dompurify`](https://github.com/radyakaze/nuxt-dompurify), follow these steps:
+
+### 1. Swap the dependency
+
+```bash
+# Remove the old module
+bun remove @radya/nuxt-dompurify
+
+# Install purrrify
+bun add purrrify
+```
+
+### 2. Update `nuxt.config.ts`
+
+Replace the module name and config key:
+
+```diff
+export default defineNuxtConfig({
+-  modules: ['@radya/nuxt-dompurify'],
++  modules: ['purrrify'],
+-  dompurify: {
++  purrrify: {
+    profiles: {
+      // ...
+    }
+  }
+})
+```
+
+### 3. Update profile options
+
+Profile options now use [sanitize-html](https://github.com/apostrophecms/sanitize-html#readme) syntax instead of DOMPurify:
+
+| DOMPurify (old) | sanitize-html (new)                                            |
+| --------------- | -------------------------------------------------------------- |
+| `ALLOWED_TAGS`  | `allowedTags`                                                  |
+| `ALLOWED_ATTR`  | `allowedAttributes`                                            |
+| `FORBID_TAGS`   | _(use `allowedTags` to allow only specific tags)_              |
+| `FORBID_ATTR`   | _(use `allowedAttributes` to allow only specific attributes)_  |
+| `ADD_TAGS`      | `allowedTags: sanitizeHtml.defaults.allowedTags.concat([...])` |
+
+Example:
+
+```diff
+profiles: {
+  headingsOnly: {
+-   ALLOWED_TAGS: ['h1', 'h2', 'h3'],
++   allowedTags: ['h1', 'h2', 'h3'],
+  }
+}
+```
+
+For the full list of options, see the [sanitize-html documentation](https://github.com/apostrophecms/sanitize-html#readme).
+
+### 4. No more SSR workarounds
+
+Purrrify uses `sanitize-html` which works natively on both server and client. You can remove any `jsdom`-related workarounds or build configurations you had for SSR.
 
 ## Acknowledgements
 

@@ -5,12 +5,12 @@ import { useRuntimeConfig } from '#imports'
 
 export default defineNuxtPlugin(({ vueApp }) => {
   const {
-    public: { dompurify }
+    public: { purrrify }
   } = useRuntimeConfig()
 
   function sanitize(binding: DirectiveBinding) {
-    if (binding.arg && dompurify?.profiles?.[binding.arg]) {
-      return sanitizeHtml(binding.value, dompurify.profiles[binding.arg])
+    if (binding.arg && purrrify?.profiles?.[binding.arg]) {
+      return sanitizeHtml(binding.value, purrrify.profiles[binding.arg])
     }
 
     return sanitizeHtml(binding.value)

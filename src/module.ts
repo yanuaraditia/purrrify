@@ -11,13 +11,13 @@ export * from './types'
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: 'purrrify',
-    configKey: 'dompurify'
+    configKey: 'purrrify'
   },
   setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
     if (options.profiles) {
-      nuxt.options.runtimeConfig.public.dompurify = {
+      nuxt.options.runtimeConfig.public.purrrify = {
         profiles: options.profiles
       }
     }
