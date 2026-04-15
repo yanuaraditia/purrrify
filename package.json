@@ -6,7 +6,7 @@
   "keywords": [
     "nuxt",
     "nuxt-module",
-    "dompurify",
+    "sanitize-html",
     "xss",
     "sanitize",
     "security"

@@ -1,24 +1,22 @@
-<!-- Based on @radya/nuxt-dompurify by Pringgo Radianto (Radya) — https://github.com/radyakaze/nuxt-dompurify -->
-
-# Purrify
+# 🙀 Purrify
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-A Nuxt module that integrates [DOMPurify](https://github.com/cure53/DOMPurify) for sanitizing HTML content. Protects your application from XSS attacks by sanitizing any potentially dangerous HTML inputs.
+A Nuxt module that integrates [sanitize-html](https://github.com/apostrophecms/sanitize-html) for sanitizing HTML content. Protects your application from XSS attacks by sanitizing any potentially dangerous HTML inputs.
 
-> This module is a maintained fork of [`@radya/nuxt-dompurify`](https://github.com/radyakaze/nuxt-dompurify) by [Pringgo Radianto (Radya)](https://github.com/radyakaze). Full credit to the original author.
+> Inspired by [`@radya/nuxt-dompurify`](https://github.com/radyakaze/nuxt-dompurify) by [Pringgo Radianto (Radya)](https://github.com/radyakaze). This project is a complete rewrite using a different sanitization engine (`sanitize-html` instead of `DOMPurify`) with native SSR support and typed directives.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
 
 ## Features
 
-- 🛡️ &nbsp;Sanitize HTML content using DOMPurify
-- 🎯 &nbsp;`v-sanitize-html` directive for templates
+- 🛡️ &nbsp;Sanitize HTML content using [sanitize-html](https://github.com/apostrophecms/sanitize-html)
+- 🎯 &nbsp;`v-sanitize-html` directive for templates with full TypeScript support
 - 📦 &nbsp;Support for multiple sanitization profiles
-- 🖥️ &nbsp;SSR compatible (uses jsdom on the server)
+- 🖥️ &nbsp;Native SSR support — no `jsdom` or browser APIs required
 
 ## Quick Setup
 
@@ -38,8 +36,8 @@ Then add it to your `nuxt.config.ts`:
 
 ```ts
 export default defineNuxtConfig({
-  modules: ["purrify"],
-});
+  modules: ['purrify']
+})
 ```
 
 ## Usage
@@ -59,25 +57,29 @@ const dirtyHtml = `
   <img src="image.jpg" onerror="alert('Hacked!')" />
   <a href="https://example.com" onclick="stealCookies()">Click me!</a>
   <script>alert('XSS!')<\/script>
-</div>`;
+</div>`
 </script>
 ```
 
 ## Profiles
 
-Define different DOMPurify configurations for specific use cases:
+Define different sanitization configurations for specific use cases using [sanitize-html options](https://github.com/apostrophecms/sanitize-html#readme):
 
 ```ts
 export default defineNuxtConfig({
-  modules: ["purrify"],
+  modules: ['purrify'],
   dompurify: {
     profiles: {
       headingsOnly: {
-        ALLOWED_TAGS: ["h1", "h2", "h3", "h4", "h5", "h6"],
+        allowedTags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
       },
-    },
-  },
-});
+      plainText: {
+        allowedTags: [],
+        allowedAttributes: {}
+      }
+    }
+  }
+})
 ```
 
 ### Using Profiles
@@ -92,7 +94,7 @@ Pass the profile name as an argument to the directive:
 
 ## Acknowledgements
 
-This module is based on [`@radya/nuxt-dompurify`](https://github.com/radyakaze/nuxt-dompurify) by [Pringgo Radianto (Radya)](https://github.com/radyakaze), licensed under MIT.
+This module was inspired by [`@radya/nuxt-dompurify`](https://github.com/radyakaze/nuxt-dompurify) by [Pringgo Radianto (Radya)](https://github.com/radyakaze). The original module used DOMPurify with jsdom for SSR, which caused build issues in production. Purrify is a complete rewrite using [sanitize-html](https://github.com/apostrophecms/sanitize-html), which works natively on both server and client without requiring a DOM implementation.
 
 ## Contribution
 
@@ -127,7 +129,7 @@ This module is based on [`@radya/nuxt-dompurify`](https://github.com/radyakaze/n
 
 ## License
 
-[MIT](./LICENSE) — Original work copyright (c) 2024 Pringgo Radianto (Radya). Modified work copyright (c) 2026 Yanuar Aditia.
+[MIT](./LICENSE) — Copyright (c) 2026 Yanuar Aditia.
 
 <!-- Badges -->
 
