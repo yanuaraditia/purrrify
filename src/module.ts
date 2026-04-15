@@ -1,4 +1,9 @@
-import { defineNuxtModule, addPlugin, addTypeTemplate, createResolver } from '@nuxt/kit'
+import {
+  defineNuxtModule,
+  addPlugin,
+  addTypeTemplate,
+  createResolver
+} from '@nuxt/kit'
 import type { ModuleOptions } from './types'
 
 export * from './types'
