@@ -1,0 +1,68 @@
+{
+  "name": "purrify",
+  "version": "1.0.0",
+  "description": "A Nuxt module that integrates DOMPurify for sanitizing HTML content and protecting against XSS attacks, with support for multiple profiles. Based on @radya/nuxt-dompurify by Pringgo Radianto (Radya).",
+  "repository": "yanuaraditia/purrify",
+  "keywords": [
+    "nuxt",
+    "nuxt-module",
+    "dompurify",
+    "xss",
+    "sanitize",
+    "security"
+  ],
+  "author": "Yanuar Aditia",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
+    }
+  },
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "workspaces": [
+    "playground"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "dev": "bun run dev:prepare && nuxt dev playground",
+    "dev:build": "nuxt build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground",
+    "release": "bun run lint && bun run test && bun run prepack && changelogen --release && bun publish && git push --follow-tags",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^4.4.2",
+    "dompurify": "^3.4.0",
+    "jsdom": "^29.0.2"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^3.2.4",
+    "@nuxt/eslint-config": "^1.15.2",
+    "@nuxt/module-builder": "^1.0.2",
+    "@nuxt/schema": "^4.4.2",
+    "@nuxt/test-utils": "^4.0.2",
+    "@types/dompurify": "^3.2.0",
+    "@types/node": "^25.6.0",
+    "changelogen": "^0.6.2",
+    "eslint": "^10.2.0",
+    "nuxt": "^4.4.2",
+    "typescript": "~6.0.2",
+    "vitest": "^4.1.4",
+    "vue-tsc": "^3.2.6"
+  }
+}
