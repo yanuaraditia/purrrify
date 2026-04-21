@@ -1,5 +1,22 @@
 # Changelog
 
+## v2.0.0
+
+[compare changes](https://github.com/yanuaraditia/purrrify/compare/v1.0.2...v2.0.0)
+
+### 🩹 Fixes
+
+- Bump version to 1.0.3 in package.json caused by publishing failure ([7bd5093](https://github.com/yanuaraditia/purrrify/commit/7bd5093))
+- ⚠️  Ensure Vite pre-bundles and transpiles `sanitize-html` for correct module resolution ([00ce904](https://github.com/yanuaraditia/purrrify/commit/00ce904))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Ensure Vite pre-bundles and transpiles `sanitize-html` for correct module resolution ([00ce904](https://github.com/yanuaraditia/purrrify/commit/00ce904))
+
+### ❤️ Contributors
+
+- Yanuar Aditia ([@ngalor](https://github.com/ngalor))
+
 ## v1.0.2
 
 [compare changes](https://github.com/yanuaraditia/purrrify/compare/v1.0.1...v1.0.2)
